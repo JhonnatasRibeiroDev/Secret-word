@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useCallback, useEffect, useState } from "react";
 
+//components
+import StartScreen from "./components/StartScreen";
+import Game from "./components/Game";
+import GameOver from "./components/GameOver";
+
+//data
+import { words } from './data/words';
+
+
+const stage = [
+  {id: 1, name: "start"},
+  {id: 2, name: "game"},
+  {id: 3, name: "end"},
+]
+
+function App (){
+  const [gameStage, setGameStage] = useState(stage[0].name);
+  const [secretWord, setSecretWord] = useState(words);
+  console.log(secretWord);
+
+  const startGame = ()=>{
+    setGameStage(stage[1].name);
+  }
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App">
+      {gameStage === "start" && <StartScreen start={startGame} />}
+      {gameStage === "game" && <Game/>}
+      {gameStage === "end" && <GameOver/>}
+    </div>
   )
-}
-
-export default App
+}export default App;
