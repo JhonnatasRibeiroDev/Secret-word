@@ -4,15 +4,23 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    margin-top: 40px;
     color: #ffffff;
     font-size: calc(10px + 2vmin);
     text-align: center;
     padding: 0 10%;
     background-color: #25232309;
     height: 300px;
-    border-radius: 0px 0px 50px 50px;
+    border-radius: 50px;
     backdrop-filter: blur(30px);
+    transition: .2s;
+    border: 2px solid yellow;
 }
+.StartScreen:hover{
+    background-color: #25232338;
+    
+}
+
 .StartScreen h2{
     font-size: 50px;
 
@@ -32,4 +40,15 @@
     color: #ffffff;
     cursor: pointer;
     transform: scale(1.1);
+}
+@media (max-width: 768px) {
+    .StartScreen{
+        margin: 40px 20px;
+    }
+    .StartScreen h2{
+        font-size: 20px;
+    }
+    .StartScreen button{
+        font-size: 15px;
+    }
 }
